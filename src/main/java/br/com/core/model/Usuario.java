@@ -1,10 +1,11 @@
 package br.com.core.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Usuario  implements Serializable {
@@ -18,6 +19,10 @@ public class Usuario  implements Serializable {
     private String email;
     private String telefone;
     private String senha;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedido = new ArrayList<>();
 
     public Usuario(){}
 
@@ -67,5 +72,9 @@ public class Usuario  implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Pedido> getPedido() {
+        return pedido;
     }
 }
