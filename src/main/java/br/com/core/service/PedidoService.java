@@ -20,9 +20,9 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
-    public Pedido usuarioPorId(Long id){
-        Optional<Pedido> obj = pedidoRepository.findById(id);
-        return obj.get();
+    public Pedido pedidoPorId(Long id){
+        Optional<Pedido> pedido = pedidoRepository.findById(id);
+        return pedido.get();
     }
 
 }

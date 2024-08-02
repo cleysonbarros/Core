@@ -28,8 +28,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> listarPorId(@PathVariable Long id) {
-        Usuario listar = usuarioService.listarPorId(id);
+    public ResponseEntity<Usuario> usuarioPorId(@PathVariable Long id) {
+        Usuario listar = usuarioService.usuarioPorId(id);
         return ResponseEntity.ok().body(listar);
     }
 }

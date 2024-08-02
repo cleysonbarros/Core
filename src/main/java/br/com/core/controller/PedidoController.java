@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/pedido")
-@RequestMapping
+@RestController
+@RequestMapping("/pedido")
 public class PedidoController {
     
     @Autowired
@@ -22,16 +22,16 @@ public class PedidoController {
 
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> listarUsuario() {
+    public ResponseEntity<List<Pedido>> listarPedido() {
         List<Pedido> PedidoLista = pedidoService.listarPedido();
         return new ResponseEntity<List<Pedido>>(PedidoLista, HttpStatus.OK);
 
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Pedido> findById(@PathVariable Long id) {
-        Pedido obj = pedidoService.usuarioPorId(id);
-        return ResponseEntity.ok().body(obj);
+    @GetMapping("/{id}")
+    public ResponseEntity<Pedido> pedidoPorId(@PathVariable Long id) {
+        Pedido pedidoId = pedidoService.pedidoPorId(id);
+        return ResponseEntity.ok().body(pedidoId);
     }
 
 }
